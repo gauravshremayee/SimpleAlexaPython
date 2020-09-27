@@ -4,25 +4,33 @@ import subprocess
 import signal 
 import atexit
 import time
-print("Excuting demo.py")
-proc = subprocess.Popen(["python3", "demo.py"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-print("wait for child ")
-# Here you can get the PID
 global child_pid
 child_pid = proc.pid
+def excel(): 
+        proc = subprocess.Popen(["python3", "demo.py"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    
+def internet(): 
+        os.system("start chrome.exe")
+        
+def media(): 
+        os.system("start wmplayer.exe")
+        
+        
+        def stop(): print("Killing Child Process...")           os.kill(child_pid, signal.SIGTERM)
 
-# Now we can wait for the child to complete
-#(output, error) = proc.communicate()
+ def mainfunction(source): 
+        audio = r.listen(source) 
+        user = r.recognize(audio) 
+        print(user) 
+        if user == "Excel": 
+                excel() 
+        elif user == "Internet": 
+                        internet() 
+        elif user == "music": 
+                media()
 
-#if error:
-#    print ("error:", error)
-
-#print ("output:", output)
-
-time.sleep(5)
-if child_pid is None:
-        pass
-else:
-        print("Killing Child Process...")
-        os.kill(child_pid, signal.SIGTERM)
+                
+ if __name__ == "__main__": 
+        r = sr.Recognizer() with sr.Microphone() as source: 
+                while 1: 
+                        mainfunction(source)
