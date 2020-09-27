@@ -4,11 +4,17 @@ import subprocess
 import signal 
 import atexit
 import time
+import pyaudio,os
+import speech_recognition as sr
+
 global child_pid
-child_pid = proc.pid
-def excel(): 
+
+
+def excel():
+        print("Starting Demo...")
         proc = subprocess.Popen(["python3", "demo.py"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     
+        child_pid=proc.pid
 def internet(): 
         os.system("start chrome.exe")
         
@@ -16,9 +22,11 @@ def media():
         os.system("start wmplayer.exe")
         
         
-        def stop(): print("Killing Child Process...")           os.kill(child_pid, signal.SIGTERM)
+def stop(): 
+        print("Stopping the Task....")        
+        os.kill(child_pid, signal.SIGTERM)
 
- def mainfunction(source): 
+def mainfunction(source): 
         audio = r.listen(source) 
         user = r.recognize(audio) 
         print(user) 
@@ -30,7 +38,8 @@ def media():
                 media()
 
                 
- if __name__ == "__main__": 
-        r = sr.Recognizer() with sr.Microphone() as source: 
+if __name__ == "__main__": 
+        r = sr.Recognizer() 
+        with sr.Microphone() as source: 
                 while 1: 
                         mainfunction(source)
