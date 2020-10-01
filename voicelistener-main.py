@@ -64,7 +64,8 @@ def internet():
         os.system("start chrome.exe")
         
 def media(): 
-        os.system("start wmplayer.exe")
+        #os.system("start wmplayer.exe")
+        os.system("mpv --volume=100 https://youtu.be/YiWq34hA7zQ")
         
         
 def stop(): 
